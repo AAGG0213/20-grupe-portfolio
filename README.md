@@ -5,13 +5,13 @@
 
 # Portfolio
 
-### 20 group portfolio website project
+_20 group portfolio website project_
 
 This project is for educational porpuses only. Pull request are welcome, but priority for my real-life students! Thank you for your cooperation!
 
 Site published at https://front-end-by-rimantas.github.io/20-grupe-portfolio/
 
-Design: `null`
+Design: [Cristino](http://shreethemes.in/cristino/layouts/index.html)
 
 ## Project features
 
