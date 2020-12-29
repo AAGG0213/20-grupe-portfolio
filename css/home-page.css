@@ -2,12 +2,41 @@
 @import './components/variables.css';
 @import './components/reset.css';
 /* 3rd party */
-@import './components/bootstrap-grid.min.css';
+@import './components/bootstrap.min.css';
 /* components */
+@import './components/about-me.css';
+@import './components/achievements.css';
+@import './components/banner.css';
+@import './components/blog.css';
+@import './components/button.css';
+@import './components/contact-details.css';
+@import './components/footer.css';
+@import './components/form.css';
+@import './components/gallery.css';
 @import './components/header.css';
+@import './components/hero.css';
+@import './components/hobbies.css';
+@import './components/job-history.css';
+@import './components/mouse.css';
+@import './components/progress-bar.css';
+@import './components/services.css';
+@import './components/slider.css';
+@import './components/testimonial.css';
+@import './components/work-expertise.css';
 
 /* custom: home page sections */
 
-/* header */
-/* hero */
-/* services */
+/* header  */
+/* hero  */
+/* about  */
+/* hobbies  */
+/* achievements  */
+/* services  */
+/* job history  */
+/* work expertise  */
+/* portfolio  */
+/* testimonials  */
+/* blog  */
+/* hire me banner  */
+/* contact me  */
+/* footer  */
