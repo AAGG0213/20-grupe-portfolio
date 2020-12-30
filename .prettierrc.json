@@ -12,7 +12,8 @@
             "files": "*.css",
             "options": {
                 "tabWidth": 2
-            }
+            },
+            "excludeFiles": "*.min.css"
         }
     ]
 }
