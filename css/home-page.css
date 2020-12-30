@@ -3,6 +3,7 @@
 @import './components/reset.css';
 /* 3rd party */
 @import './components/bootstrap.min.css';
+@import './components/font-awesome.min.css';
 /* components */
 @import './components/about-me.css';
 @import './components/achievements.css';
