@@ -13,6 +13,9 @@
   "author": "Rimantas Belovas",
   "license": "MIT",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "babel-jest": "^26.6.3",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-node": "^4.1.0",
