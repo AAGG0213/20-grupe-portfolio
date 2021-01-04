@@ -1,0 +1,27 @@
+.hobbie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  align-items: center;
+  gap: 30px;
+  padding: 15px;
+}
+.hobbie-list::before,
+.hobbie-list::after {
+  display: none;
+}
+.hobbie-list > .item {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
+  align-content: center;
+  background-color: #eee;
+  font-size: 18px;
+  line-height: 20px;
+}
+.hobbie-list > .item > .fa {
+  text-align: center;
+}
+.hobbie-list > .item > span {
+  padding: 15px;
+  border-left: 1px solid #ccc;
+}
