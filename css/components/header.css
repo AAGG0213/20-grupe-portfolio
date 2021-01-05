@@ -11,7 +11,7 @@ header .logo {
   height: 14px;
 }
 header nav {
-  display: flex;
+  display: none;
   flex-direction: row;
   gap: 20px;
   line-height: 20px;
@@ -32,11 +32,25 @@ header nav > a.active {
   color: var(--main-color);
 }
 header .socials {
-  display: flex;
+  display: none;
   flex-direction: row;
   gap: 20px;
   line-height: 20px;
 }
 header .socials > a {
   display: inline-block;
+}
+header .fa-bars {
+  padding: 10px;
+  font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  header nav,
+  header .socials {
+    display: flex;
+  }
+  header .fa-bars {
+    display: none;
+  }
 }
