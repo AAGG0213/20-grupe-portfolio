@@ -1,5 +1,6 @@
 import { isValidHobbies } from './isValidHobbies.js';
 import { findIfValidSelector } from './findIfValidSelector.js';
+import { isValidHobbieItem } from './isValidHobbieItem.js';
 
 function renderHobbies(params) {
     // input validation
@@ -17,6 +18,9 @@ function renderHobbies(params) {
 
     let HTML = '';
     for (const item of data) {
+        if (!isValidHobbieItem(item)) {
+            continue;
+        }
         HTML += `<div class="item">
                     <i class="fa fa-${item.icon}"></i>
                     <span>${item.title}</span>
