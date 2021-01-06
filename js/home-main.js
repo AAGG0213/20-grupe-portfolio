@@ -9,6 +9,8 @@ import { menuData } from './data/menuData.js';
 import { renderHobbies } from './components/hobbies/renderHobbies.js';
 import { hobbiesData } from './data/hobbiesData.js';
 /* achievements  */
+import { Achievements } from './components/achievements/Achievements.js';
+import { achievementsData } from './data/achievementsData.js';
 /* services  */
 /* job history  */
 /* work expertise  */
@@ -36,6 +38,9 @@ renderHobbies({
 });
 
 /* achievements  */
+const achievements = new Achievements(achievementsData);
+achievements.init();
+
 /* services  */
 /* job history  */
 /* work expertise  */
