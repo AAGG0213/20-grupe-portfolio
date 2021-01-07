@@ -8,6 +8,9 @@ class Achievements {
 
         this.defaultLimit = 4;
         this.DOM = null;
+        this.validUsedData = [];
+        this.animationDuration = 5;
+        this.fps = 30;
     }
 
     init() {
@@ -18,6 +21,7 @@ class Achievements {
         this.limit = this.isValidLimit() ? this.limit : this.defaultLimit;
 
         this.render();
+        this.addEvents();
     }
 
     isValidSelector() {
@@ -62,9 +66,10 @@ class Achievements {
             if (!isValidAchievementItem(item)) {
                 continue;
             }
+            this.validUsedData.push(item);
             HTML += `<div class="item"> 
                         <i class="fa fa-${item.icon}"></i>
-                        <div class="number">${item.number}</div>
+                        <div class="number">0</div>
                         <div class="label">${item.label}</div>
                     </div>`;
             validItems++;
@@ -75,6 +80,44 @@ class Achievements {
         }
 
         this.DOM.innerHTML = HTML;
+    }
+
+    animateNumber(index, DOM) {
+        const windowBottom = scrollY + innerHeight;
+        const numberBottom = DOM.offsetTop + DOM.offsetHeight;
+
+        if (windowBottom > numberBottom) {
+            // saugiklis, kuris animacija paleidzia tik viena karta
+            if (this.validUsedData[index].animated) {
+                return false;
+            }
+            this.validUsedData[index].animated = true;
+
+            // animacijos logika
+            let step = 0;
+            const increment = this.validUsedData[index].number / this.animationDuration / this.fps;
+
+            const timer = setInterval(() => {
+                const value = Math.floor(increment * step);
+                step++;
+                DOM.innerText = value;
+
+                if (value >= this.validUsedData[index].number) {
+                    DOM.innerText = this.validUsedData[index].number;
+                    clearInterval(timer);
+                }
+            }, 1000 / this.fps);
+        }
+    }
+
+    addEvents() {
+        addEventListener('scroll', () => {
+            const numbersDOM = document.querySelectorAll('.achievements .item > .number');
+
+            for (let i = 0; i < this.validUsedData.length; i++) {
+                this.animateNumber(i, numbersDOM[i]);
+            }
+        })
     }
 }
 
