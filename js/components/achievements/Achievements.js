@@ -1,12 +1,13 @@
 import { isValidAchievementItem } from './isValidAchievementItem.js';
 
 class Achievements {
-    constructor(params) {
-        this.selector = params.selector;
-        this.limit = params.limit;
-        this.data = params.data;
-
+    constructor(params = {}) {
         this.defaultLimit = 4;
+
+        this.selector = params.selector || '';
+        this.limit = params.limit || this.defaultLimit;
+        this.data = params.data || [];
+
         this.DOM = null;
         this.validUsedData = [];
         this.animationDuration = 5;
@@ -22,6 +23,7 @@ class Achievements {
 
         this.render();
         this.addEvents();
+        return true;
     }
 
     isValidSelector() {
