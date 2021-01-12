@@ -84,6 +84,7 @@ class Gallery {
     /**
      * Sukonstruoja galerijos elementa reprezentuojanti HTML tekstini turini
      * @param {Object} item Objektas aprasantis viena galerijos saraso elementa
+     * @param {string} item.image Kelias i nuotrauka
      * @param {string} item.title Galerijos elemento pavadinimas
      * @param {string[]} item.tags Galerijos elementa aprasanciu tag'u sarasas
      * @param {string} item.tags[] Galerijos elementa aprasanciu tag'as
@@ -102,6 +103,7 @@ class Gallery {
             return '';
         }
         return `<div class="item">
+                    <img class="img" src="./img/portfolio/${item.image}" alt="Gallery item">
                     <div class="texts">
                         <div class="title">${item.title}</div>
                         <div class="tags">${item.tags.join(' &#9679; ')}</div>
