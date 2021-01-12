@@ -12,6 +12,13 @@ class Gallery {
         this.init();
     }
 
+    /**
+     * Validuojama inicijuojamo objekto gauti parametrai
+     * @param {Object} params Objektas aprasantis galerija
+     * @param {string} params.selector Tekstinis selector'ius, kaip DOM'e rasti norima vieta, kur bus generuojamas galerijos turinys
+     * @param {Object[]} params.data Sarasas objektu aprasanciu galerijos duomenis
+     * @returns {boolean} Ar validus inicijuojamo objekto gauti parametrai
+     */
     isValidInput(params) {
         if (typeof params !== 'object' ||
             Object.keys(params).length === 0) {
@@ -28,6 +35,10 @@ class Gallery {
         return true;
     }
 
+    /**
+     * Automatiskai paleidziamas metodas, kai yra kuriamas `Gallery` klases objektas
+     * @returns {void}
+     */
     init() {
         if (!this.isValidSelector()) {
             return false;
@@ -35,6 +46,10 @@ class Gallery {
         this.render();
     }
 
+    /**
+     * Pagal pateikta `this.selector` yra ieskoma `DOM` vieta puslapyje ir ja radus yra issaugoma `this.DOM`
+     * @returns {boolean} Ar pavyko rasti `DOM` elementa
+     */
     isValidSelector() {
         const DOM = document.querySelector(this.selector);
         if (!DOM) {
@@ -44,6 +59,10 @@ class Gallery {
         return true;
     }
 
+    /**
+     * Sukonstruoja galutini `HTML` teksta is pateiktu duomenu ir ji istati i nurodyta `this.DOM` vieta pagal gauta `this.selector` parametra
+     * @returns {boolean} Ar pavyko sugeneruoti turini
+     */
     render() {
         let listHTML = '';
 
@@ -62,6 +81,14 @@ class Gallery {
         return true;
     }
 
+    /**
+     * Sukonstruoja galerijos elementa reprezentuojanti HTML tekstini turini
+     * @param {Object} item Objektas aprasantis viena galerijos saraso elementa
+     * @param {string} item.title Galerijos elemento pavadinimas
+     * @param {string[]} item.tags Galerijos elementa aprasanciu tag'u sarasas
+     * @param {string} item.tags[] Galerijos elementa aprasanciu tag'as
+     * @returns {string} HTML tekstas
+     */
     generateGalleryItem(item) {
         if (!item ||
             typeof item !== 'object' ||
