@@ -64,6 +64,7 @@ class Gallery {
      * @returns {boolean} Ar pavyko sugeneruoti turini
      */
     render() {
+        const filterHTML = this.generateGalleryFilter();
         let listHTML = '';
 
         for (const item of this.data) {
@@ -75,7 +76,7 @@ class Gallery {
         }
 
         this.DOM.innerHTML = `<div class="gallery">
-                                <div class="filter"></div>
+                                <div class="filter">${filterHTML}</div>
                                 <div class="list">${listHTML}</div>
                             </div>`;
         return true;
@@ -109,6 +110,35 @@ class Gallery {
                         <div class="tags">${item.tags.join(' &#9679; ')}</div>
                     </div>
                 </div>`;
+    }
+
+
+    generateGalleryFilter() {
+        // is visu darbu isrinkti tik tagus
+        let allTags = [];
+        for (const item of this.data) {
+            allTags = [...allTags, ...item.tags];
+        }
+
+        // suformatuojame (paverciama mazosiomis raidemis)
+        const formatedTags = allTags.map(tag => tag.toLowerCase());
+
+        // atfiltruoti tik unikalius tagus
+        const uniqueTags = [];
+        for (const tag of formatedTags) {
+            if (!uniqueTags.includes(tag)) {
+                uniqueTags.push(tag);
+            }
+        }
+
+        // TODO: generuojame HTML
+        let HTML = '<div class="tag active">All</div>';
+        for (const tag of uniqueTags) {
+            HTML += `<div class="tag">${tag}</div>`
+        }
+
+        // TODO: graziname HTML
+        return HTML;
     }
 }
 

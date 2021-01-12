@@ -2,32 +2,32 @@ const galleryData = [
     {
         image: '1.jpg',
         title: 'The Usefulness',
-        tags: ['web', 'design']
+        tags: ['pc', 'tech']
     },
     {
-        image: '1.jpg',
+        image: '2.jpg',
         title: 'The Usefulness',
-        tags: ['web', 'design']
+        tags: ['flower', 'paper', 'tech']
     },
     {
-        image: '1.jpg',
+        image: '3.jpg',
         title: 'The Usefulness',
-        tags: ['web', 'design']
+        tags: ['Paper', 'table']
     },
     {
-        image: '1.jpg',
+        image: '4.jpg',
         title: 'The Usefulness',
-        tags: ['web', 'design']
+        tags: ['Pc', 'flower', 'cup']
     },
     {
-        image: '1.jpg',
+        image: '5.jpg',
         title: 'The Usefulness',
-        tags: ['web', 'design']
+        tags: ['Cup']
     },
     {
-        image: '1.jpg',
+        image: '6.jpg',
         title: 'The Usefulness',
-        tags: ['web', 'design']
+        tags: ['Tech', 'pc', 'tablE']
     },
 ];
 

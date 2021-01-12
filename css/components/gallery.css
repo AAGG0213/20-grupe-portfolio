@@ -1,8 +1,22 @@
 .gallery {
   display: flex;
   flex-direction: column;
+  gap: 30px;
 }
 .gallery > .filter {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+}
+.gallery > .filter > .tag {
+  display: inline-block;
+  padding: 5px 10px;
+}
+.gallery > .filter > .tag:hover,
+.gallery > .filter > .tag.active {
+  background-color: red;
+  color: #fff;
 }
 .gallery > .list {
   display: grid;
