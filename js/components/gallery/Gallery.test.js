@@ -67,7 +67,7 @@ describe('Validuojame parametrus', () => {
         }
         const gallery = new Gallery(params);
         expect(gallery.isValidInput(params)).toBeTruthy();
-        expect(Object.keys(gallery).length).toBe(3);
+        expect(Object.keys(gallery).length).toBe(8);
     })
 
     test('turetu grazinti false, jei duotas neegzistuojantis selector <h1>', () => {
@@ -121,7 +121,10 @@ describe('Validuojame parametrus', () => {
     })
 
     test('turetu grazinti tuscia HTML teksta, jei galerijos objekto duomenu formatas yra netinkamas', () => {
-        const gallery = new Gallery();
+        const gallery = new Gallery({
+            selector: 'body',
+            data: [{}]
+        });
         expect(gallery.generateGalleryItem()).toBe('');
         expect(gallery.generateGalleryItem({})).toBe('');
         expect(gallery.generateGalleryItem({
