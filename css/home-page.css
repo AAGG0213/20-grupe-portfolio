@@ -28,6 +28,10 @@
 
 /* custom: home page sections */
 
+.container {
+  padding: 60px 15px;
+}
+
 /* header  */
 /* hero  */
 /* about  */
