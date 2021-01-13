@@ -12,6 +12,8 @@
 .gallery > .filter > .tag {
   display: inline-block;
   padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 .gallery > .filter > .tag:hover,
 .gallery > .filter > .tag.active {
@@ -31,6 +33,9 @@
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.5s;
+}
+.gallery > .list > .item.hidden {
+  display: none;
 }
 .gallery > .list > .item:hover {
   box-shadow: 0 4px 16px #ddd;

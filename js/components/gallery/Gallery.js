@@ -6,8 +6,13 @@ class Gallery {
 
         this.selector = params.selector;
         this.data = params.data;
+        this.validData = [];
 
         this.DOM = null;
+        this.filterDOM = null;
+        this.galleryDOM = null;
+        this.galleryItemsDOM = null;
+        this.filterAllTag = '';
 
         this.init();
     }
@@ -44,6 +49,7 @@ class Gallery {
             return false;
         }
         this.render();
+        this.addEvents();
     }
 
     /**
@@ -65,21 +71,30 @@ class Gallery {
      */
     render() {
         const filterHTML = this.generateGalleryFilter();
-        let listHTML = '';
-
-        for (const item of this.data) {
-            listHTML += this.generateGalleryItem(item);
-        }
+        const listHTML = this.generateGalleryList();
 
         if (listHTML === '') {
             return false;
         }
 
         this.DOM.innerHTML = `<div class="gallery">
-                                <div class="filter">${filterHTML}</div>
+                                ${this.filterAllTag === filterHTML ? '' : `<div class="filter">${filterHTML}</div>`}
                                 <div class="list">${listHTML}</div>
                             </div>`;
+
+        this.galleryDOM = this.DOM.querySelector('.list');
+        this.galleryItemsDOM = this.galleryDOM.querySelectorAll('.item');
         return true;
+    }
+
+    generateGalleryList() {
+        let HTML = '';
+
+        for (const item of this.data) {
+            HTML += this.generateGalleryItem(item);
+        }
+
+        return HTML;
     }
 
     /**
@@ -103,11 +118,20 @@ class Gallery {
             item.tags.length === 0) {
             return '';
         }
+
+        this.validData.push(item);
+
+        const tags = item.tags
+            .filter(tag => typeof tag === 'string' && tag.length > 0)
+            .map(tag => tag.toLocaleLowerCase());
+
+        this.validData[this.validData.length - 1].tags = [...tags];
+
         return `<div class="item">
                     <img class="img" src="./img/portfolio/${item.image}" alt="Gallery item">
                     <div class="texts">
                         <div class="title">${item.title}</div>
-                        <div class="tags">${item.tags.join(' &#9679; ')}</div>
+                        <div class="tags">${tags.join(' &#9679; ')}</div>
                     </div>
                 </div>`;
     }
@@ -117,11 +141,16 @@ class Gallery {
         // is visu darbu isrinkti tik tagus
         let allTags = [];
         for (const item of this.data) {
+            if (!item.tags) {
+                continue;
+            }
             allTags = [...allTags, ...item.tags];
         }
 
         // suformatuojame (paverciama mazosiomis raidemis)
-        const formatedTags = allTags.map(tag => tag.toLowerCase());
+        const formatedTags = allTags
+            .filter(tag => typeof tag === 'string' && tag.length > 0)
+            .map(tag => tag.toLowerCase());
 
         // atfiltruoti tik unikalius tagus
         const uniqueTags = [];
@@ -133,12 +162,50 @@ class Gallery {
 
         // TODO: generuojame HTML
         let HTML = '<div class="tag active">All</div>';
+        this.filterAllTag = HTML;
         for (const tag of uniqueTags) {
             HTML += `<div class="tag">${tag}</div>`
         }
 
         // TODO: graziname HTML
         return HTML;
+    }
+
+    addEvents() {
+        // susirandame filtra, jei egzistuoja
+        const filter = this.DOM.querySelector('.filter');
+        if (!filter) {
+            return false;
+        }
+        this.filterDOM = filter;
+
+        // susirandame filtro tagus, jei filtras egzistuoja
+        const tags = this.filterDOM.querySelectorAll('.tag');
+
+        // uzregistruojame "click" stebejima ant ju (visu)
+        for (const tag of tags) {
+            tag.addEventListener('click', () => {
+                this.updateGalleryList(tag.innerText);
+            })
+        }
+    }
+
+    updateGalleryList(tag) {
+        if (tag === 'All') {
+            for (const item of this.galleryItemsDOM) {
+                item.classList.remove('hidden');
+            }
+        } else {
+            const size = this.validData.length;
+            for (let i = 0; i < size; i++) {
+                const item = this.validData[i];
+                if (item.tags.includes(tag)) {
+                    this.galleryItemsDOM[i].classList.remove('hidden');
+                } else {
+                    this.galleryItemsDOM[i].classList.add('hidden');
+                }
+            }
+        }
     }
 }
 
