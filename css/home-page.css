@@ -1,6 +1,7 @@
 /* reset, main */
 @import './components/variables.css';
 @import './components/reset.css';
+@import './components/general-styles.css';
 /* 3rd party */
 @import './components/bootstrap.min.css';
 @import './components/font-awesome.min.css';
@@ -26,6 +27,10 @@
 @import './components/work-expertise.css';
 
 /* custom: home page sections */
+
+.container {
+  padding: 60px 15px;
+}
 
 /* header  */
 /* hero  */

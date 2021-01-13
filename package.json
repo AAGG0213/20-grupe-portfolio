@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "live-server",
     "test": "jest --passWithNoTests",
-    "test-all": "jest --watchAll",
+    "test-all": "jest --watchAll --passWithNoTests --coverage",
     "test:coverage": "jest --coverage"
   },
   "keywords": [],
