@@ -87,6 +87,10 @@ class Gallery {
         return true;
     }
 
+    /**
+     * Galerijos elementu  sarasa reprezentuojancio HTML generavimas
+     * @returns {string} Galerijos elementu HTML
+     */
     generateGalleryList() {
         let HTML = '';
 
@@ -137,6 +141,10 @@ class Gallery {
     }
 
 
+    /**
+     * Galerijos filtra generuojantis metodas
+     * @returns {string} Galerijos filtro HTML
+     */
     generateGalleryFilter() {
         // is visu darbu isrinkti tik tagus
         let allTags = [];
@@ -171,6 +179,10 @@ class Gallery {
         return HTML;
     }
 
+    /**
+     * Metodas, kuris sudelioja `event listener'ius` ant filtro elementu
+     * @returns {void}
+     */
     addEvents() {
         // susirandame filtra, jei egzistuoja
         const filter = this.DOM.querySelector('.filter');
@@ -190,6 +202,11 @@ class Gallery {
         }
     }
 
+    /**
+     * Parodo/paslepia galerijos elementus jei elementas turi/neturi ieskoma tag'a
+     * @param {string} tag Tag'o pavadinimas
+     * @returns {void}
+     */
     updateGalleryList(tag) {
         if (tag === 'All') {
             for (const item of this.galleryItemsDOM) {
